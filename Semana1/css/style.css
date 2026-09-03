@@ -1,0 +1,59 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+/*
+Seleccion universal
+*{
+    border: 1px;
+    border-style: dotted;
+}
+*/
+
+
+body{
+    /*background-image: url(../img/MontBlancGigapixel-01.jpg);
+    background: linear-gradient(90deg,rgba(24, 177, 237, 1) 0%, rgba(91, 235, 151, 1) 100%);
+     */
+    background-color: #f3f4f6;
+    color:black;
+    font-family: "Montserrat", sans-serif ;
+}
+
+header{
+    background-color: chocolate;
+    color:antiquewhite;
+    text-align:center;
+    padding: 30px;
+}
+
+
+header h1{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-size:28xp ;
+
+}
+    
+
+nav{
+    background-color:blanchedalmond;
+    text-align: center;
+    padding: 20px;
+}
+
+footer{
+    background-color:darkkhaki;
+    color:black;
+    padding: 20px;
+}
+
+.container{
+    max-width: 760px;
+    padding: 20px;
+    margin: 30px auto;
+}
+
+.container article{
+    background-color: rgba(180, 50, 120, 0.75);
+    padding: 20px;
+
+
+}
