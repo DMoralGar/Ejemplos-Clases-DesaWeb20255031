@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Crimson+Text:wght@400;600&display=swap');
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0f0d0d;
+    color: #c4b9a3;
+    font-family: 'Crimson Text', 'Georgia', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Ancho máximo del contenido */
+body > * {
+    max-width: 800px;
+    width: 100%;
+}
+
+/* Encabezados */
+h2.titulo, h3 {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    color: #e5d3b3;
+    text-align: center;
+}
+
+h2.titulo {
+    font-size: 2.4rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3a322c;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #d1b894;
+    border-bottom: 1px solid #2a2420;
+    padding-bottom: 5px;
+}
+
+/* Secciones de Contenido */
+section {
+    background-color: #161413;
+    border: 1px solid #362d28;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 4px;
+}
+
+/* Párrafos */
+p {
+    margin-top: 10px;
+    color: #bfae99;
+}
+
+/* Imágenes */
+.country-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 15px auto;
+    border: 1px solid #3a322c;
+    border-radius: 2px;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 600px) {
+    h2.titulo {
+        font-size: 1.8rem;
+    }
+    h3 {
+        font-size: 1.3rem;
+    }
+    section {
+        padding: 15px;
+    }
+}
