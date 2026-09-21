@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaLab | Demostración de layout</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio">NovaLab</a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="menu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li class="has-submenu">
+            <a href="#recursos">
+              Recursos <span class="submenu-arrow" aria-hidden="true">▾</span>
+            </a>
+            <ul class="submenu">
+              <li><a href="#guias">Guías</a></li>
+              <li><a href="#ejemplos">Ejemplos</a></li>
+              <li><a href="#referencias">Referencias</a></li>
+            </ul>
+          </li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio" class="page-content">
+    <section class="hero">
+      <p class="eyebrow">Desarrollo Web I</p>
+      <h1>Construyendo interfaces con CSS</h1>
+      <p>
+        Este ejemplo reúne Flexbox, posicionamiento y control de visualización
+        en un layout pequeño y fluido.
+      </p>
+      <a class="primary-action" href="#recursos">Explorar recursos</a>
+    </section>
+
+    <section id="recursos" class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">Recursos</p>
+        <h2>Material para continuar</h2>
+      </div>
+
+      <div class="card-list">
+        <article id="guias" class="card">
+          <span class="card-tag">01</span>
+          <h3>Guías prácticas</h3>
+          <p>Ejercicios breves para practicar propiedades CSS en contextos concretos.</p>
+          <a href="#">Ver guías</a>
+        </article>
+
+        <article id="ejemplos" class="card">
+          <span class="card-tag">02</span>
+          <h3>Ejemplos editables</h3>
+          <p>Fragmentos de código que permiten observar el efecto de cada cambio.</p>
+          <a href="#">Ver ejemplos</a>
+        </article>
+
+        <article id="referencias" class="card">
+          <span class="card-tag">03</span>
+          <h3>Referencias</h3>
+          <p>Documentación y recursos de consulta para ampliar los conceptos de clase.</p>
+          <a href="#">Consultar</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="proyectos" class="section-block split-section">
+      <div>
+        <p class="eyebrow">Aplicación</p>
+        <h2>Un layout pequeño puede reunir varios conceptos</h2>
+      </div>
+      <p>
+        Durante la demostración modificaremos únicamente las propiedades
+        relacionadas con distribución, posicionamiento, visualización y capas.
+      </p>
+    </section>
+
+    <section class="section-block">
+      <div class="section-heading">
+        <p class="eyebrow">Práctica</p>
+        <h2>Contenido suficiente para probar el desplazamiento</h2>
+      </div>
+      <div class="card-list">
+        <article class="card">
+          <span class="card-tag">A</span>
+          <h3>Flujo normal</h3>
+          <p>Antes de posicionar elementos conviene observar cómo participan en el flujo del documento.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">B</span>
+          <h3>Posicionamiento</h3>
+          <p>Los elementos fijos y absolutos salen total o parcialmente del comportamiento esperado del flujo.</p>
+        </article>
+        <article class="card">
+          <span class="card-tag">C</span>
+          <h3>Visualización</h3>
+          <p>Las propiedades de visualización permiten controlar qué elementos se muestran en cada estado.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contacto" class="section-block callout">
+      <div>
+        <p class="eyebrow">Cierre</p>
+        <h2>Observa el comportamiento durante el scroll</h2>
+      </div>
+      <p>
+        Al final de la demostración el encabezado y el pie permanecerán visibles,
+        y la opción Recursos mostrará un segundo nivel correctamente posicionado.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>NovaLab</span>
+      <span>Demostración de posicionamiento y visualización</span>
+    </div>
+  </footer>
+</body>
+</html>

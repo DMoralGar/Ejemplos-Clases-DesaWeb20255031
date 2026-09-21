@@ -1,0 +1,279 @@
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text: #20252b;
+  --muted: #66717d;
+  --line: #dfe4e8;
+  --accent: #22577a;
+  --accent-soft: #eaf2f7;
+  --header-height: 72px;
+  --footer-height: 54px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+/* =========================================================
+   ENCABEZADO Y NAVEGACIÓN
+   La distribución y el posicionamiento se completarán en clase.
+   ========================================================= */
+
+.site-header {
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid var(--line);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.header-inner,
+.footer-inner,
+.page-content {
+  width: 90%;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.header-inner {
+  min-height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+}
+
+.brand {
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.main-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.55rem;
+  color: #3c4650;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.menu{
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.menu > li{
+  position: relative;
+
+}
+
+.menu > li > a:hover,
+.menu > li > a:focus-visible,
+.menu > li:focus-within > a {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.submenu-arrow {
+  margin-left: 0.2rem;
+  font-size: 0.8em;
+}
+
+.submenu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: none;
+  min-width: 190px;
+  padding: 0.45rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  box-shadow: 0 12px 28px rgba(26, 38, 49, 0.14);
+}
+
+.submenu a {
+  border-radius: 0.45rem;
+}
+
+.has-submenu:hover .submenu{
+  display:block;
+}
+
+.submenu a:hover,
+.submenu a:focus-visible {
+  background: var(--accent-soft);
+}
+
+/* =========================================================
+   CONTENIDO
+   Estas reglas ya están resueltas para concentrar la demo.
+   ========================================================= */
+
+.page-content {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  margin-top: var(--header-height)
+}
+
+.hero {
+  padding: 4rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+}
+
+.hero h1,
+.section-block h2 {
+  margin: 0;
+  line-height: 1.15;
+}
+
+.hero h1 {
+  max-width: 720px;
+  font-size: clamp(2.3rem, 6vw, 4.8rem);
+  letter-spacing: -0.04em;
+}
+
+.hero > p:not(.eyebrow) {
+  max-width: 720px;
+  margin: 1.5rem 0 2rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.primary-action {
+  display: inline-block;
+  padding: 0.8rem 1rem;
+  background: var(--accent);
+  border-radius: 0.55rem;
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.section-block {
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+}
+
+.section-heading {
+  margin-bottom: 1.5rem;
+}
+
+.card-list {
+  display: flex;
+  gap: 1rem;
+}
+
+.card {
+  flex: 1;
+  padding: 1.5rem;
+  background: #fbfcfd;
+  border: 1px solid var(--line);
+  border-radius: 0.85rem;
+}
+
+.card h3 {
+  margin: 0.7rem 0 0.5rem;
+}
+
+.card p {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.card a {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.card-tag {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  background: var(--accent-soft);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.split-section,
+.callout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.split-section > *,
+.callout > * {
+  flex: 1;
+}
+
+.split-section > p,
+.callout > p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* =========================================================
+   PIE DE PÁGINA
+   El posicionamiento se completará en clase.
+   ========================================================= */
+
+.site-footer {
+  background: #1f2933;
+  color: #e9eef2;
+  position: fixed;
+  width: 100%;
+  left:0;
+  bottom: 0;
+}
+
+.footer-inner {
+  min-height: var(--footer-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+}

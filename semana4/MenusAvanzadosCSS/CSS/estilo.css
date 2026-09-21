@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=MonteCarlo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'MonteCarlo', cursive;
+    font-size: 0.5cm;
+}
+
+/* ==============================
+   Apariencia del menú lateral
+   ============================== */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #042331;
+    transition: 1s all;
+}
+
+.sidebar > header {
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    line-height: 70px;
+    background-color: #063146;
+    user-select: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid black;
+
+    /* En clase: organizar el logo y el título en una misma fila. */
+}
+
+.logo {
+    width: 25%;
+    height: 100%;
+
+    /* En clase: centrar la imagen dentro de su espacio. */
+}
+
+.logo img {
+    border-radius: 50%;
+    width: 90%;
+    height: 90%;
+}
+
+.sidebar ul a {
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: white;
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid black;
+    transition: 0.5s;
+
+    /* En clase: conseguir que cada enlace ocupe toda la fila. */
+}
+
+ul li:hover a {
+    padding-left: 50px;
+}
+
+.sidebar ul a i {
+    margin-right: 10px;
+}
+
+/* ==============================
+   Controles del menú
+   ============================== */
+
+#checkMenu {
+    /* En clase: ocultar el checkbox sin eliminar su estado checked. */
+}
+
+#btnMostrar,
+#btnOcultar {
+    cursor: pointer;
+    background-color: #042331;
+    border-radius: 3px;
+
+    /* En clase: sacar los controles del flujo y ubicarlos manualmente. */
+}
+
+#btnMostrar {
+    font-size: 35px;
+    color: white;
+    padding: 6px 12px;
+}
+
+#btnOcultar {
+    font-size: 30px;
+    color: #999999;
+    padding: 4px 9px;
+}
+
+/* ==============================
+   Contenido principal
+   ============================== */
+
+.container {
+    background: url("../IMG/fondoBosque.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    transition: 1s all;
+}
+
+/*
+   A partir de este punto se agregarán en clase las reglas que:
+
+   1. convierten el encabezado del sidebar en un contenedor flex;
+   2. convierten los enlaces del menú en bloques;
+   3. fijan y ocultan inicialmente el sidebar fuera del viewport;
+   4. ocultan el checkbox;
+   5. posicionan los botones de abrir y cerrar;
+   6. muestran el sidebar cuando el checkbox está seleccionado;
+   7. alternan visualmente los botones de abrir y cerrar;
+   8. desplazan el contenido principal cuando el menú está abierto.
+*/

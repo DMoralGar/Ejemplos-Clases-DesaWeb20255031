@@ -27,7 +27,7 @@ body > * {
 }
 
 /* Encabezados */
-h2.titulo, h3 {
+h2.titulo, h2 {
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
     color: #e5d3b3;
@@ -41,7 +41,7 @@ h2.titulo {
     border-bottom: 1px solid #3a322c;
 }
 
-h3 {
+h2 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     color: #d1b894;
@@ -74,15 +74,3 @@ p {
     border-radius: 2px;
 }
 
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 600px) {
-    h2.titulo {
-        font-size: 1.8rem;
-    }
-    h3 {
-        font-size: 1.3rem;
-    }
-    section {
-        padding: 15px;
-    }
-}

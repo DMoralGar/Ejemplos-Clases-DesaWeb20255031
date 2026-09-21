@@ -1,0 +1,23 @@
+*{
+    box-sizing: border-box;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #eef1f5;
+  padding: 10px;
+  width: 800px;
+}
+
+.elemento {
+  background-color: #123B7A;
+  color: white;
+  padding: 18px;
+  margin: 5px;
+  min-width: 55px;
+  text-align: center;
+  font-family: sans-serif;
+  width: clac(33.3% - 10px);
+}
