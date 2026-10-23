@@ -7,8 +7,8 @@ function generarNumeroAleatorio() {
   const parrafo = document.querySelector("#idParrafo");
 
   if (intentos <= numeroIntentos) {
-    let numero = prompt(
-      "¿Que número se ha generado (Intento " + intentos + ")?"
+    let numero = Number(
+      prompt("¿Que número se ha generado (Intento " + intentos + ")?")
     );
 
     if (numero == numeroAleatorio) {
@@ -18,7 +18,8 @@ function generarNumeroAleatorio() {
       mensaje = `Su numero de intentos ha terminado.
         El numero oculto era: ${numeroAleatorio}. Refresque la página para volver a jugar.`;
     } else {
-      mensaje = `Vuelve a intentar. Quedan ${
+      const pista = numeroAleatorio > numero ? "más alto" : "más bajo";
+      mensaje = `Vuelve a intentar. El número que busca es ${pista} que ${numero}. Quedan ${
         numeroIntentos - intentos
       } intentos`;
     }
