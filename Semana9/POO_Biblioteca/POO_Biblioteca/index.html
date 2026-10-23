@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biblioteca | Desarrollo Web I</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root { --azul-esen: #123B7A; --dorado-esen: #C8AD55; }
+    body { background: #F3F4F6; color: #2B2B2B; }
+    .encabezado { background: var(--azul-esen); border-bottom: 4px solid var(--dorado-esen); }
+    .btn-primary { --bs-btn-bg: #123B7A; --bs-btn-border-color: #123B7A; --bs-btn-hover-bg: #0d2b58; --bs-btn-hover-border-color: #0d2b58; }
+    .text-es { color: var(--azul-esen); }
+  </style>
+</head>
+<body>
+  <header class="encabezado text-white py-3 mb-4">
+    <div class="container">
+      <div class="small text-uppercase">ESEN · Desarrollo Web I</div>
+      <h1 class="h4 mb-0">Sistema de préstamos de biblioteca</h1>
+    </div>
+  </header>
+
+  <main class="container pb-5">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <section class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h2 class="h5 text-es mb-3">Usuario</h2>
+            <form id="form-usuario">
+              <div class="mb-3">
+                <label class="form-label" for="nombre">Nombre</label>
+                <input class="form-control" id="nombre" name="nombre" type="text" value="Ana" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="tipo">Tipo de usuario</label>
+                <select class="form-select" id="tipo" name="tipo">
+                  <option value="estudiante">Estudiante</option>
+                  <option value="docente">Docente</option>
+                </select>
+              </div>
+              <button class="btn btn-primary w-100" type="submit">Crear usuario</button>
+            </form>
+            <p class="small text-secondary mb-0 mt-3">Crear un usuario nuevo reinicia los préstamos visibles.</p>
+          </div>
+        </section>
+
+        <section class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="h5 text-es mb-3">Registrar préstamo</h2>
+            <form id="form-prestamo">
+              <div class="mb-3">
+                <label class="form-label" for="titulo">Título</label>
+                <input class="form-control" id="titulo" name="titulo" type="text" placeholder="El principito" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="autor">Autor</label>
+                <input class="form-control" id="autor" name="autor" type="text" placeholder="Antoine de Saint-Exupéry" required>
+              </div>
+              <button class="btn btn-primary w-100" type="submit">Prestar libro</button>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <div class="col-lg-8">
+        <div id="mensaje" class="alert" role="status" aria-live="polite" hidden></div>
+        <section class="card shadow-sm">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+              <div>
+                <h2 class="h5 text-es mb-1">Préstamos activos</h2>
+                <p id="resumen" class="text-secondary mb-0"></p>
+              </div>
+              <span id="contador" class="badge text-bg-light border fs-6"></span>
+            </div>
+            <div class="progress mb-3" role="progressbar" aria-label="Ocupación de préstamos" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="barra" class="progress-bar" style="width: 0%; background-color: #123B7A"></div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-middle mb-0">
+                <thead class="table-light">
+                  <tr><th scope="col">Título</th><th scope="col">Autor</th><th scope="col" class="text-end">Acción</th></tr>
+                </thead>
+                <tbody id="tabla-prestamos"></tbody>
+              </table>
+            </div>
+            <p id="sin-prestamos" class="text-secondary mb-0 py-3">No hay libros prestados.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="biblioteca.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

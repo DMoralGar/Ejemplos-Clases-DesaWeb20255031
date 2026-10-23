@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratorio guiado de manipulación del DOM en JavaScript">
+  <title>Laboratorio DOM | Desarrollo Web I</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/ejemplos.js" defer></script>
+  <script src="js/ejercicios.js" defer></script>
+  <script src="js/control.js" defer></script>
+</head>
+<body>
+  <header class="encabezado">
+    <div class="marca">ESEN <span class="marca__division">/ Desarrollo Web I</span></div>
+    <div class="encabezado__detalle">Laboratorio guiado de JavaScript</div>
+  </header>
+
+  <main class="pagina">
+    <section class="presentacion">
+      <div>
+        <p class="sobrelinea">DOM · Ejemplo progresivo</p>
+        <h1 id="titulo-principal">Cartelera de talleres</h1>
+        <p id="subtitulo">Una misma página para practicar selección, creación, atributos e inserción de elementos.</p>
+      </div>
+      <div class="presentacion__acciones">
+        <button id="boton-reiniciar" class="boton boton--secundario" type="button">Reiniciar página</button>
+      </div>
+    </section>
+
+    <div class="distribucion">
+      <div class="escenario">
+        <section class="seccion" aria-labelledby="titulo-catalogo">
+          <div class="seccion__cabecera">
+            <div>
+              <p class="seccion__etiqueta">Área de práctica</p>
+              <h2 id="titulo-catalogo">Talleres disponibles</h2>
+            </div>
+            <span id="etiqueta-atributos" class="etiqueta-sistema" title="Etiqueta de demostración">Catálogo académico</span>
+          </div>
+
+          <div class="filtros" aria-label="Controles de ejemplo para getElementsByName">
+            <span class="filtros__titulo">Modalidad (controles de muestra):</span>
+            <label><input type="radio" name="modalidad" value="presencial"> Presencial</label>
+            <label><input type="radio" name="modalidad" value="virtual"> Virtual</label>
+          </div>
+
+          <div id="catalogo-talleres" class="tarjetas">
+            <article id="taller-html" class="taller" data-codigo="DW-101" data-nivel="inicial" data-modalidad="presencial" data-cupo="28" title="Introducción a HTML">
+              <div class="taller__meta"><span class="categoria">Desarrollo web</span><span class="modalidad">Presencial</span></div>
+              <h3>HTML semántico</h3>
+              <p class="taller__descripcion">Estructura y significado de los documentos web.</p>
+              <div class="taller__pie"><span class="nivel">Nivel inicial</span><strong>28 cupos</strong></div>
+            </article>
+            <article id="taller-css" class="taller atenuada" data-codigo="DW-102" data-nivel="intermedio" data-modalidad="virtual" data-cupo="18" title="Diseño con CSS">
+              <div class="taller__meta"><span class="categoria">Diseño web</span><span class="modalidad">Virtual</span></div>
+              <h3>Flexbox y CSS Grid</h3>
+              <p class="taller__descripcion">Distribución flexible y sistemas de malla.</p>
+              <div class="taller__pie"><span class="nivel">Nivel intermedio</span><strong>18 cupos</strong></div>
+            </article>
+            <article id="taller-js" class="taller" data-codigo="DW-103" data-nivel="intermedio" data-modalidad="presencial" data-cupo="20" title="Programación con JavaScript">
+              <div class="taller__meta"><span class="categoria">Programación</span><span class="modalidad">Presencial</span></div>
+              <h3>JavaScript práctico</h3>
+              <p class="taller__descripcion">Funciones, objetos e interacción con el navegador.</p>
+              <div class="taller__pie"><span class="nivel">Nivel intermedio</span><strong>20 cupos</strong></div>
+            </article>
+            <article id="taller-git" class="taller" data-codigo="DW-104" data-nivel="inicial" data-modalidad="virtual" data-cupo="32" title="Control de versiones con Git">
+              <div class="taller__meta"><span class="categoria">Herramientas</span><span class="modalidad">Virtual</span></div>
+              <h3>Git y GitHub</h3>
+              <p class="taller__descripcion">Versionamiento y colaboración en proyectos.</p>
+              <div class="taller__pie"><span class="nivel">Nivel inicial</span><strong>32 cupos</strong></div>
+            </article>
+          </div>
+          <p id="mensaje-estatico" class="mensaje" title="Aviso de cartelera">Los talleres son ejemplos académicos; la información no corresponde a una oferta real.</p>
+        </section>
+
+        <section class="seccion" aria-labelledby="titulo-pruebas">
+          <div class="seccion__cabecera">
+            <div><p class="seccion__etiqueta">Áreas de prueba</p><h2 id="titulo-pruebas">Operaciones con nodos</h2></div>
+          </div>
+          <p class="detalle-seccion">Las listas siguientes permiten observar cada operación sin alterar las tarjetas del catálogo.</p>
+          <div class="rejilla-listas">
+            <div class="zona-lista">
+              <h3>Métodos tradicionales: ejemplo</h3>
+              <ul id="lista-tradicional-demo" class="lista-nodos">
+                <li id="tradicional-reemplazar">Registro que será reemplazado</li>
+                <li id="tradicional-eliminar">Registro que será eliminado</li>
+              </ul>
+            </div>
+            <div class="zona-lista">
+              <h3>Métodos tradicionales: ejercicio</h3>
+              <ul id="lista-tradicional-ejercicio" class="lista-nodos">
+                <li id="ejercicio-referencia">Elemento de referencia</li>
+                <li id="ejercicio-eliminar">Elemento para eliminar</li>
+              </ul>
+            </div>
+            <div class="zona-lista">
+              <h3>Métodos modernos: ejemplo</h3>
+              <ul id="lista-moderna-demo" class="lista-nodos">
+                <li id="moderna-ancla">Elemento central</li>
+                <li id="moderna-reemplazar">Elemento para sustituir</li>
+                <li id="moderna-eliminar">Elemento para retirar</li>
+              </ul>
+            </div>
+            <div class="zona-lista">
+              <h3>Métodos modernos: ejercicio</h3>
+              <ul id="lista-moderna-ejercicio" class="lista-nodos">
+                <li id="ejercicio-moderno-ancla">Elemento central</li>
+                <li id="ejercicio-moderno-reemplazar">Elemento para sustituir</li>
+                <li id="ejercicio-moderno-eliminar">Elemento para retirar</li>
+              </ul>
+            </div>
+          </div>
+          <div class="pie-ejemplos">
+            <div id="bloque-estado" class="estado compacta atenuada">Elemento para practicar <code>classList</code>.</div>
+            <p id="nota-temporal" hidden>Este mensaje era inicialmente invisible mediante el atributo <code>hidden</code>.</p>
+          </div>
+        </section>
+
+        <section class="seccion" aria-labelledby="titulo-navegacion">
+          <div class="seccion__cabecera"><div><p class="seccion__etiqueta">Árbol DOM</p><h2 id="titulo-navegacion">Navegación entre elementos</h2></div></div>
+          <div id="panel-navegacion" class="panel-navegacion">
+            <ol id="lista-navegacion">
+              <li>HTML</li>
+              <li id="navega-centro">CSS</li>
+              <li>JavaScript</li>
+              <li>Git</li>
+            </ol>
+          </div>
+        </section>
+      </div>
+
+      <aside class="guia" aria-label="Panel de trabajo guiado">
+        <div class="guia__cabecera">
+          <p class="sobrelinea">Secuencia de clase</p>
+          <h2>Ejemplos y ejercicios</h2>
+          <p>Seleccione una etapa. Ejecute el ejemplo, revise el código correspondiente y complete su ejercicio.</p>
+        </div>
+        <nav id="navegacion-etapas" class="navegacion-etapas" aria-label="Etapas del laboratorio">
+          <button type="button" data-etapa="1">01 · getElementById <small>Diap. 4</small></button>
+          <button type="button" data-etapa="2">02 · getElementsByClassName <small>Diap. 5</small></button>
+          <button type="button" data-etapa="3">03 · name y tagName <small>Diap. 6</small></button>
+          <button type="button" data-etapa="4">04 · querySelector <small>Diap. 7</small></button>
+          <button type="button" data-etapa="5">05 · querySelectorAll <small>Diap. 8</small></button>
+          <button type="button" data-etapa="6">06 · Crear y clonar nodos <small>Diap. 9–10</small></button>
+          <button type="button" data-etapa="7">07 · Propiedades y atributos <small>Diap. 11</small></button>
+          <button type="button" data-etapa="8">08 · Consultar atributos <small>Diap. 12–13</small></button>
+          <button type="button" data-etapa="9">09 · Modificar atributos <small>Diap. 14–15</small></button>
+          <button type="button" data-etapa="10">10 · classList <small>Diap. 16</small></button>
+          <button type="button" data-etapa="11">11 · dataset <small>Diap. 17–18</small></button>
+          <button type="button" data-etapa="12">12 · Inserción tradicional <small>Diap. 19–20</small></button>
+          <button type="button" data-etapa="13">13 · Inserción moderna <small>Diap. 21</small></button>
+          <button type="button" data-etapa="14">14 · Navegación del DOM <small>Diap. 22–23</small></button>
+        </nav>
+        <section class="actividad" aria-live="polite" aria-label="Actividad seleccionada">
+          <div class="actividad__meta"><span id="etapa-paginas">Diap. 4</span><span id="etapa-contador">Etapa 1 de 14</span></div>
+          <h3 id="etapa-titulo">Seleccionar por identificador</h3>
+          <div class="bloque-instruccion"><strong>Ejemplo resuelto</strong><p id="etapa-ejemplo"></p></div>
+          <div class="bloque-instruccion bloque-instruccion--tarea"><strong>Ejercicio pendiente</strong><p id="etapa-ejercicio"></p></div>
+          <p id="etapa-criterio" class="criterio"></p>
+          <div class="actividad__acciones">
+            <button id="boton-ejemplo" class="boton boton--primario" type="button">Ejecutar ejemplo</button>
+            <button id="boton-ejercicio" class="boton boton--acento" type="button">Probar ejercicio</button>
+          </div>
+          <p class="ayuda">Los ejemplos están en <code>ejemplos.js</code>. Complete las funciones <code>TODO</code> de <code>ejercicios.js</code>, guarde y actualice la página.</p>
+          <div class="salida">
+            <div class="salida__titulo">Salida de consola <span>(copia simplificada)</span></div>
+            <pre id="salida-consola" aria-live="polite">Seleccione y ejecute una etapa.</pre>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <footer class="pie-pagina">ESEN · Desarrollo Web I · Material de práctica</footer>
+</body>
+</html>
