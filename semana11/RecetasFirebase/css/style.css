@@ -1,0 +1,85 @@
+:root {
+    --primary-color: #198754;
+    --secondary-color: #6c757d;
+    --danger-color: #dc3545;
+}
+
+body {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.recipe-card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.recipe-image {
+    height: 200px;
+    object-fit: cover;
+    background-color: #e9ecef;
+}
+
+.recipe-category {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+}
+
+.recipe-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.ingredients-list {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.ingredients-list li {
+    padding: 4px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.ingredients-list li:last-child {
+    border-bottom: none;
+}
+
+.loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.modal-backdrop.show {
+    opacity: 0.5;
+}
+
+.ingredient-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.ingredient-item input {
+    flex: 1;
+}
+
+.btn-remove-ingredient {
+    min-width: 38px;
+}
