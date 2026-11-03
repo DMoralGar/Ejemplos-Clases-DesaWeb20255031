@@ -1,4 +1,4 @@
-import { createRecipe } from "./service/recipeService.js";
+import { createRecipe, getAllRecipes } from "./service/recipeService.js";
 
 const receta1={
     name:'Pupusas de Chicharron',
@@ -8,5 +8,7 @@ const receta1={
     imageUrl:""
 }
 //Aqui estuvo Rodrigo Morales
-const resultado = await createRecipe(receta1);
-console.log(resultados);
+//const resultados = await createRecipe(receta1);
+//console.log(resultados);
+const {data} = await getAllRecipes();
+console.log(data);
