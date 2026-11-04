@@ -1,80 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link rel="icon" href="img/js.png" sizes="32x32" type="image/png" />
-    <title>Utilizando estructuras de control</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos Clases DesaWeb</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #16a085;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <main class="d-flex flex-nowrap">
-        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark nav-bar">
-            <a href="index.html"
-                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <img src="./img/js.png" alt="" width="32" height="32" class="me-2" />
-                <span class="fs-4">JavaScript</span>
-            </a>
-            <hr />
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="pages/registroAcademico.html" class="nav-link text-white">
-                        <i class="bi bi-file-spreadsheet" role="img" aria-label="RegistroAcademico"></i>
-                        Registro académico
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/tablasMultiplicar.html" class="nav-link text-white">
-                        <i class="bi bi-person-workspace" role="img" aria-label="TablasMultiplicar"></i>
-                        Tablas de multiplicar
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/promedioNotas.html" class="nav-link text-white">
-                        <i class="bi bi-file-earmark-medical" role="img" aria-label="Promedio"></i>
-                        Promedio notas
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/arreglo.html" class="nav-link text-white">
-                        <i class="bi bi-box" role="img" aria-label="Arreglo"></i>
-                        Arreglo
-                </a>
-            </li>
+
+    <h1>Ejemplos Clases DesaWeb</h1>
+
+    <div class="card">
+        <h2>Documentos y Guías de Desarrollo Web</h2>
+
+        <h3>Estilos CSS Independientes</h3>
+        <ul>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia_1/Dcss/DarkD.css" target="_blank">DarkD.css</a></li>
+        </ul>
+
+        <h3>Guía 1</h3>
+        <ul>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia_1/ejemplo2.html">Ejemplo 2</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia_1/estilos_embebidos.html">Estilos Embebidos</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia_1/paises.html">Países</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia_1/Darkest_Dungeon.html">Darkest Dungeon</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia_1/corinca_version_modificada/index_coringav1.html">Coringa Version Modificada</a></li>
+        </ul>
+
+        <h3>Guía 2</h3>
+        <ul>
+            <li><a href="MisDocumentos/GuiasDesarrollo/20255031_Guia2/pelicula.html">Película</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/20255031_Guia2/tablero.html">Tablero</a></li>
+        </ul>
+
+        <h3>Guía 3</h3>
+        <ul>
+            <li><a href="MisDocumentos/GuiasDesarrollo/20255031_Guia3/ejemplo1/index.html">Ejemplo 1 - Maravillas del Mundo</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/20255031_Guia3/ejemplo2/index.html">Ejemplo 2 - Menú Lateral Desplegable</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/20255031_Guia3/ejercicio/ejercicio.html">Ejercicio - Posicionamiento y z-index</a></li>
+        </ul>
+
+        <h3>Guía 5</h3>
+        <ul>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia5/index.html">Ejemplo 1 - Interacción Básica con el Usuario</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia5/pages/tablas.html">Ejemplo 2 - Creando Tablas con JavaScript</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia5/pages/numeroAleatorio.html">Ejemplo 3 y Ejercicio 1 - Número Aleatorio</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia5/pages/operacionesBasicas.html">Ejemplo 4 - Operaciones Básicas</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia5/pages/pedidos.html">Ejercicio 2 - Gestión de Pedidos de una Cafetería</a></li>
+        </ul>
+
+        <h3>Guía 6 - Parte I: Estructuras de control y arreglos</h3>
+        <ul>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/index.html">Ejemplo 1 - Índice del sitio</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/pages/registroAcademico.html">Ejemplo 2 - Arreglos Multidimensionales (Registro Académico)</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/pages/tablasMultiplicar.html">Ejemplo 3 - Tablas de Multiplicar</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/pages/promedioNotas.html">Ejemplo 4 - Promedio de Notas</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/pages/arreglo.html">Ejemplo 5 - Trabajando con Arreglos</a></li>
+        </ul>
+
+        <h3>Guía 6 - Parte II: Funciones</h3>
+        <ul>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/indexFunciones.html">Ejemplo 1 - Índice de Funciones</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/pages/recursividad.html">Ejemplo 2 - Recursividad (Factorial)</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/pages/tabla.html">Ejemplo 3 - Creando una Tabla con Funciones</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/pages/formulario.html">Ejemplo 4 y Ejercicios 1 y 2 - Formulario (Editar, Eliminar y LocalStorage)</a></li>
+            <li><a href="MisDocumentos/GuiasDesarrollo/Guia6/pages/validaciones.html">Ejercicio 3 - Validaciones con Expresiones Regulares</a></li>
         </ul>
     </div>
-    <div class="d-flex flex-column flex-shrink-0 p-3 colum-container">
-        <div class="p-5 mb-2 bg-light rounded-3">
-            <div class="container-fluid py-4">
-                <h1 class="display-5 fw-bold">Utilizando estructuras de control</h1>
-                <p class="col-md-8 fs-4">
-                    <ol>
-                        <li>
-                            Estructuras selectivas
-                            <ul>
-                                <li>if...else</li>
-                                <li>switch</li>
-                            </ul>
-                        </li>
-                        <li>
-                            Sentencias repetitivas
-                            <ul>
-                                <li>for</li>
-                                <li>while</li>
-                                <li>do while</li>
-                                <li>for...in</li>
-                                <li>for...of</li>
-                            </ul>
-                        </li>
-                        <li> Matrices </li>
-                    </ol>
-                </p>
-            </div>
-        </div>
-    </div>
-</main>
-<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
