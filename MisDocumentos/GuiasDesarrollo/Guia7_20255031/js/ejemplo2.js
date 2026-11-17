@@ -1,99 +1,202 @@
-// Obteniendo la referencia de los elementos
-// por medio de arreglos asociativos
-// aqui se esta utilizando el atributo name de cada elemento
+// ===== REFERENCIAS =====
 const formulario = document.forms["frmRegistro"];
-const button = document.forms["frmRegistro"].elements["btnRegistro"];
+const button = formulario.elements["btnRegistro"];
 
-// CREANDO MODAL CON BOOTSTRAP
 const modal = new bootstrap.Modal(document.getElementById("idModal"), {});
-
-// OBTENIENDO LA REFERENCIA DEL CUERPO DEL MODAL
-// PARA IMPRIMIR EL RESULTADO
 const bodyModal = document.getElementById("idBodyModal");
+const tituloModal = document.getElementById("modalLabel");
 
-// Recorrer el formulario
-const recorrerFormulario = function () {
-  let totText = 0;
-  let totRadio = 0;
-  let totCheck = 0;
-  let totDate = 0;
-  let totSelect = 0;
-  let totFile = 0;
-  let totPass = 0;
-  let totEmail = 0;
+// ===== UTILIDADES DOM (sin innerHTML) =====
 
-  // Recorriendo elementos del formulario
-  let elementos = formulario.elements;
-  let totalElementos = elementos.length;
+// Elimina todos los hijos de un nodo
+const limpiarNodo = function (nodo) {
+  while (nodo.firstChild) {
+    nodo.removeChild(nodo.firstChild);
+  }
+};
 
-  for (let index = 0; index < totalElementos; index++) {
-    // Accediendo a cada hijo del formulario
-    let elemento = elementos[index];
+// Crea una fila <tr> con una celda de encabezado y una de valor
+const crearFila = function (campo, valor) {
+  const tr = document.createElement("tr");
 
-    // verificando el tipo de control en el formulario
-    let tipoElemento = elemento.type;
-    // verificando el tipo de nodo
-    let tipoNode = elemento.nodeName;
+  const th = document.createElement("th");
+  th.setAttribute("scope", "row");
+  th.appendChild(document.createTextNode(campo));
 
-    // Contabilizando el total de INPUT TYPE = TEXT
-    if (tipoElemento == "text" && tipoNode == "INPUT") {
-      console.log(elemento);
-      totText++;
+  const td = document.createElement("td");
+  td.appendChild(document.createTextNode(valor));
+
+  tr.appendChild(th);
+  tr.appendChild(td);
+  return tr;
+};
+
+// Obtiene el texto del <label> asociado a un control (o su value si no hay)
+const textoDe = function (control) {
+  const label = document.querySelector(`label[for="${control.id}"]`);
+  return label ? label.textContent.trim() : control.value;
+};
+
+// ===== LECTURA DE CONTROLES (por tipo) =====
+const leerFormulario = function () {
+  const textos = formulario.querySelectorAll('input[type="text"]');
+  const passwords = formulario.querySelectorAll('input[type="password"]');
+  const email = formulario.querySelector('input[type="email"]');
+  const fecha = formulario.querySelector('input[type="date"]');
+  const archivo = formulario.querySelector('input[type="file"]');
+  const select = formulario.querySelector("select");
+  const checks = formulario.querySelectorAll('input[type="checkbox"]:checked');
+  const radio = formulario.querySelector('input[type="radio"]:checked');
+
+  return { textos, passwords, email, fecha, archivo, select, checks, radio };
+};
+
+// ===== VALIDACIONES =====
+const validarFormulario = function () {
+  const errores = [];
+  const c = leerFormulario();
+
+  // a. Campos no vacíos
+  const nombres = ["Nombres", "Apellidos"];
+  c.textos.forEach((txt, i) => {
+    if (txt.value.trim() === "") {
+      errores.push(`El campo ${nombres[i] || "de texto " + (i + 1)} no puede estar vacío.`);
     }
-    // Contabilizando el total de INPUT TYPE = PASSWORD
-    else if (tipoElemento == "password" && tipoNode == "INPUT") {
-      console.log(elemento);
-      totPass++;
-    }
-    // Contabilizando el total de INPUT TYPE = EMAIL
-    else if (tipoElemento == "email" && tipoNode == "INPUT") {
-      console.log(elemento);
-      totEmail++;
-    }
-    // Contabilizando el total de INPUT TYPE = RADIO
-    else if (tipoElemento == "radio" && tipoNode == "INPUT") {
-      console.log(elemento);
-      totRadio++;
-    }
-    // Contabilizando el total de INPUT TYPE = CHECKBOX
-    else if (tipoElemento == "checkbox" && tipoNode == "INPUT") {
-      console.log(elemento);
-      totCheck++;
-    }
-    // Contabilizando el total de INPUT TYPE = FILE
-    else if (tipoElemento == "file" && tipoNode == "INPUT") {
-      console.log(elemento);
-      totFile++;
-    }
-    // Contabilizando el total de INPUT TYPE = DATE
-    else if (tipoElemento == "date" && tipoNode == "INPUT") {
-      console.log(elemento);
-      totDate++;
-    }
-    // Contabilizando el total de SELECT
-    else if (tipoNode == "SELECT") {
-      console.log(elemento);
-      totSelect++;
+  });
+
+  // b. Fecha de nacimiento
+  if (c.fecha.value === "") {
+    errores.push("La fecha de nacimiento no puede estar vacía.");
+  } else {
+    const [anio, mes, dia] = c.fecha.value.split("-").map(Number);
+    const fechaNac = new Date(anio, mes - 1, dia);
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    if (fechaNac > hoy) {
+      errores.push("La fecha de nacimiento no puede ser mayor a la fecha actual.");
     }
   }
 
-  let resultado = `
-    Total de input[type="text"] = ${totText}<br>
-    Total de input[type="password"] = ${totPass}<br>
-    Total de input[type="radio"] = ${totRadio}<br>
-    Total de input[type="checkbox"] = ${totCheck}<br>
-    Total de input[type="date"] = ${totDate}<br>
-    Total de input[type="email"] = ${totEmail}<br>
-    Total de select = ${totSelect}<br>
-  `;
+  // c. Correo con expresión regular
+  const regexCorreo = /^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/i;
+  if (c.email.value.trim() === "") {
+    errores.push("El correo electrónico no puede estar vacío.");
+  } else if (!regexCorreo.test(c.email.value.trim())) {
+    errores.push("El correo electrónico no tiene un formato válido.");
+  }
 
-  bodyModal.innerHTML = resultado;
-  //Funcion que permite mostrar el modal de Bootstrap
-  //Esta funcion es definida por Bootstrap
+  // d. Contraseñas
+  const pass1 = c.passwords[0].value;
+  const pass2 = c.passwords[1].value;
+  if (pass1 === "" || pass2 === "") {
+    errores.push("Debe completar la contraseña y repetir contraseña.");
+  } else if (pass1 !== pass2) {
+    errores.push("Las contraseñas no coinciden.");
+  }
+
+  // e. Al menos un interés
+  if (c.checks.length === 0) {
+    errores.push("Seleccione al menos un interés.");
+  }
+
+  // f. Carrera
+  if (!c.radio) {
+    errores.push("Seleccione una carrera.");
+  }
+
+  // g. País de origen
+  // La primera opción ("Seleccione una opcion") no tiene value, por eso se usa selectedIndex
+  if (c.select.selectedIndex === 0) {
+    errores.push("Seleccione un país de origen.");
+  }
+
+  // Avatar (campo no vacío)
+  if (c.archivo.files.length === 0) {
+    errores.push("Seleccione la imagen de su avatar.");
+  }
+
+  return errores;
+};
+
+// ===== MOSTRAR ERRORES EN EL MODAL =====
+const mostrarErrores = function (errores) {
+  tituloModal.textContent = "Error de validación";
+  limpiarNodo(bodyModal);
+
+  const alerta = document.createElement("div");
+  alerta.setAttribute("class", "alert alert-danger mb-0");
+
+  const titulo = document.createElement("strong");
+  titulo.textContent = "Corrija los siguientes errores:";
+  alerta.appendChild(titulo);
+
+  const ul = document.createElement("ul");
+  ul.setAttribute("class", "mb-0 mt-2");
+  errores.forEach((msg) => {
+    const li = document.createElement("li");
+    li.textContent = msg;
+    ul.appendChild(li);
+  });
+  alerta.appendChild(ul);
+
+  bodyModal.appendChild(alerta);
   modal.show();
 };
 
-// agregando eventos al boton
-button.onclick = () => {
-  recorrerFormulario();
+// ===== MOSTRAR TABLA CON LOS DATOS =====
+const mostrarDatos = function () {
+  const c = leerFormulario();
+  tituloModal.textContent = "Datos del registro";
+  limpiarNodo(bodyModal);
+
+  const tabla = document.createElement("table");
+  tabla.setAttribute("class", "table table-striped table-bordered mb-0");
+
+  const thead = document.createElement("thead");
+  const trHead = document.createElement("tr");
+  ["Campo", "Valor"].forEach((texto) => {
+    const th = document.createElement("th");
+    th.textContent = texto;
+    trHead.appendChild(th);
+  });
+  thead.appendChild(trHead);
+  tabla.appendChild(thead);
+
+  const tbody = document.createElement("tbody");
+  tbody.appendChild(crearFila("Nombres", c.textos[0].value.trim()));
+  tbody.appendChild(crearFila("Apellidos", c.textos[1].value.trim()));
+  tbody.appendChild(crearFila("Fecha de nacimiento", c.fecha.value));
+  tbody.appendChild(crearFila("Correo electrónico", c.email.value.trim()));
+  tbody.appendChild(crearFila("Contraseña", "*".repeat(c.passwords[0].value.length)));
+
+  const intereses = Array.from(c.checks).map((chk) => textoDe(chk));
+  tbody.appendChild(crearFila("Intereses", intereses.join(", ")));
+
+  tbody.appendChild(crearFila("Carrera", textoDe(c.radio)));
+  tbody.appendChild(
+    crearFila("País de origen", c.select.options[c.select.selectedIndex].textContent)
+  );
+  tbody.appendChild(crearFila("Avatar", c.archivo.files[0].name));
+
+  tabla.appendChild(tbody);
+
+  // Contenedor responsive de Bootstrap
+  const contenedor = document.createElement("div");
+  contenedor.setAttribute("class", "table-responsive");
+  contenedor.appendChild(tabla);
+
+  bodyModal.appendChild(contenedor);
+  modal.show();
+};
+
+// ===== EVENTO DEL BOTÓN =====
+button.onclick = (event) => {
+  event.preventDefault(); // evita que el formulario recargue la página
+
+  const errores = validarFormulario();
+  if (errores.length > 0) {
+    mostrarErrores(errores);
+  } else {
+    mostrarDatos();
+  }
 };
